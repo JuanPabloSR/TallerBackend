@@ -1,6 +1,7 @@
 package com.sofka.pruebacrud.services;
 
 import java.util.ArrayList;
+import java.util.Optional;
 
 import com.sofka.pruebacrud.models.UsuarioModel;
 import com.sofka.pruebacrud.repositories.UsuarioRepository;
@@ -19,6 +20,23 @@ public class UsuarioService {
 
     public UsuarioModel guardarUsuario(UsuarioModel usuario){
         return usuarioRepository.save(usuario);
+    }
+
+    public Optional<UsuarioModel> obtenerPorId(Long id){
+        return usuarioRepository.findById(id);
+    }
+
+    public ArrayList<UsuarioModel> obtenerPorPrioridad(Integer prioridad) {
+        return UsuarioRepository.findByPrioridad(prioridad);
+    }
+
+    public boolean eliminarUsuario(Long id) {
+        try{
+            usuarioRepository.deleteById(id);
+            return true;
+        }catch (Exception err){
+            return false;
+        }
     }
 
 }
