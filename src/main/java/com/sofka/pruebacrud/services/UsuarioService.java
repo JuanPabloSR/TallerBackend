@@ -38,6 +38,8 @@ public class UsuarioService {
         }
     }
 
+    // metodo nuevo para actualizar usuarios
+
     public UsuarioModel update(UsuarioModel usuario){
         return usuarioRepository.save(usuario);
     }
