@@ -5,7 +5,6 @@ import java.util.Optional;
 
 import com.sofka.pruebacrud.models.UsuarioModel;
 import com.sofka.pruebacrud.repositories.UsuarioRepository;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -35,6 +34,21 @@ public class UsuarioService {
             usuarioRepository.deleteById(id);
             return true;
         }catch (Exception err){
+            return false;
+        }
+    }
+
+    public UsuarioModel update(UsuarioModel usuario){
+        return usuarioRepository.save(usuario);
+    }
+
+    // metodo nuevo para eliminar todos los usuarios
+
+    public boolean eliminarTodo() {
+        try{
+            usuarioRepository.deleteAll();
+            return true;
+        }catch(Exception err){
             return false;
         }
     }
